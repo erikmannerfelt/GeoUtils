@@ -18,6 +18,7 @@ This package contains tools for working with geospatial raster and vector data.
 
     raster-basics
     satimg-basics
+    vector-basics
     api
     
 

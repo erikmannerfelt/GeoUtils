@@ -21,7 +21,7 @@ os.environ["PYTHON"] = sys.executable
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 #needs_sphinx = '3.3.1'
-master_doc = 'index'
+#master_doc = 'source/index'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -33,7 +33,7 @@ extensions = [
     "sphinx.ext.autosummary",  # Create API doc summary texts from the docstrings.
     "sphinx.ext.inheritance_diagram",  # For class inheritance diagrams (see coregistration.rst).
     "sphinx_autodoc_typehints",  # Include type hints in the API documentation.
-    "sphinxcontrib.programoutput"
+    "sphinxcontrib.programoutput"  # Run scripts and show the output.
 ]
 
 extlinks = {'issue': ('https://github.com/GlacioHack/GeoUtils/issues/%s',
