@@ -9,3 +9,4 @@ pylint
 sphinxcontrib_programoutput
 sphinx_autodoc_typehints
 matplotlib
+scipy
