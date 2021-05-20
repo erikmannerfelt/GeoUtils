@@ -8,6 +8,11 @@ geoutils
 
 This package contains tools for working with geospatial raster and vector data.
 
+.. literalinclude:: code/index_example.py
+
+.. program-output:: $PYTHON code/index_example.py 
+        :shell:
+
 .. toctree::
     :maxdepth: 1
 

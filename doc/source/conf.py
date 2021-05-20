@@ -13,6 +13,9 @@ copyright = '2020, GeoUtils Developers'
 author = 'GeoUtils Developers'
 
 
+# Set the python environment variable for programoutput to find it.
+os.environ["PYTHON"] = sys.executable
+
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -24,9 +27,13 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx_rtd_theme'
+    "sphinx.ext.autodoc",  # Create the API documentation automatically
+    "sphinx.ext.viewcode",  # Create the "[source]" button in the API to show the source code.
+    'matplotlib.sphinxext.plot_directive',  # Render matplotlib figures from code.
+    "sphinx.ext.autosummary",  # Create API doc summary texts from the docstrings.
+    "sphinx.ext.inheritance_diagram",  # For class inheritance diagrams (see coregistration.rst).
+    "sphinx_autodoc_typehints",  # Include type hints in the API documentation.
+    "sphinxcontrib.programoutput"
 ]
 
 extlinks = {'issue': ('https://github.com/GlacioHack/GeoUtils/issues/%s',

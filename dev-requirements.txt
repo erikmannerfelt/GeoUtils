@@ -6,3 +6,5 @@ pytest
 sphinx
 sphinx_rtd_theme
 pylint
+sphinxcontrib_programoutput
+sphinx_autodoc_typehints

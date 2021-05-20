@@ -1,0 +1,17 @@
+Driver:               GTiff 
+Opened from file:     /home/erik/Projects/ETH/GeoUtils/geoutils/datasets/LE71400412000304SGS00_B4_crop.TIF 
+Filename:             /home/erik/Projects/ETH/GeoUtils/geoutils/datasets/LE71400412000304SGS00_B4_crop.TIF 
+Raster modified since disk load?  False 
+Size:                 800, 655
+Number of bands:      1
+Data types:           ('uint8',)
+Coordinate System:    EPSG:32645
+NoData Value:         None
+Pixel Size:           30.0, 30.0
+Upper Left Corner:    478000.0, 3088490.0
+Lower Right Corner:   502000.0, 3108140.0
+[MAXIMUM]:          255.00
+[MINIMUM]:          13.00
+[MEDIAN]:           124.00
+[MEAN]:             144.04
+[STD DEV]:          79.44
