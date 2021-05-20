@@ -28,13 +28,10 @@ class TestDocs:
 
     def test_build(self):
         """Try building the docs and see if it works."""
-        current_dir = os.getcwd()
-        # Change into the docs directory.
-        os.chdir(self.docs_dir)
 
         # Remove the build directory if it exists.
-        if os.path.isdir("build/"):
-            shutil.rmtree("build/")
+        if os.path.isdir(os.path.join(self.docs_dir, "build/")):
+            shutil.rmtree(os.path.join(self.docs_dir, "build/"))
 
         # Copy the environment and set the SPHINXBUILD variable to call the module.
         # This is for it to work properly with GitHub Workflows
@@ -42,7 +39,7 @@ class TestDocs:
         env["SPHINXBUILD"] = f"{sys.executable} -m sphinx"
 
         # Run the makefile
-        build_commands = ["make", "html"]
+        build_commands = ["make", "-C", self.docs_dir, "html"]
         result = subprocess.run(
             build_commands,
             check=True,
@@ -60,4 +57,3 @@ class TestDocs:
         if len(result.stderr) > 0:
             warnings.warn(result.stderr)
 
-        os.chdir(current_dir)

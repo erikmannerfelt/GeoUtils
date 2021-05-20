@@ -3,6 +3,7 @@ Test datasets
 """
 import pytest
 import hashlib
+import warnings
 
 import geoutils as gu
 from geoutils import datasets
@@ -19,7 +20,10 @@ def test_read_paths_raster(test_dataset):
     "test_dataset", ["glacier_outlines"]
 )
 def test_read_paths_vector(test_dataset):
-    assert isinstance(gu.Vector(datasets.get_path(test_dataset)), gu.Vector)
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", message="Sequential read of iterator was interrupted.")
+
+        assert isinstance(gu.Vector(datasets.get_path(test_dataset)), gu.Vector)
 
 
 # Original sha256 obtained with `sha256sum filename`
