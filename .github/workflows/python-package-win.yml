@@ -31,8 +31,8 @@ jobs:
         C:\Miniconda\python.exe -m pip install -e . --no-dependencies
     - name: Lint with flake8
       run: |
-        #C:\Miniconda\condabin\conda.bat init powershell
-        #C:\Miniconda\condabin\conda.bat activate base
+        C:\Miniconda\condabin\conda.bat init powershell
+        C:\Miniconda\condabin\conda.bat activate base
         # stop the build if there are Python syntax errors or undefined names
         C:\Miniconda\python.exe -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
