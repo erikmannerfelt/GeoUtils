@@ -26,7 +26,7 @@ jobs:
         C:\Miniconda\condabin\conda.bat env update --file environment.yml --name base
         C:\Miniconda\condabin\conda.bat init powershell
         C:\Miniconda\condabin\conda.bat activate base
-        pip install sphinx numpydoc sphinx_rtd_theme sphinx_autodoc_typehints sphinxcontrib-programoutput flake8 pytest
+        pip install sphinx numpydoc sphinx_rtd_theme sphinx_autodoc_typehints sphinxcontrib-programoutput flake8 pytest matplotlib
         pip install -e . --no-dependencies
     - name: Lint with flake8
       run: |
