@@ -29,8 +29,8 @@ jobs:
         activate-environment: geoutils
     - name: Install development dependencies and package
       run: |
-        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib scipy
-        python.exe -m pip install -e . --no-dependencies
+        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib scipy pylint rtree=0.9.3 geopandas
+        pip install -e . --no-dependencies
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
