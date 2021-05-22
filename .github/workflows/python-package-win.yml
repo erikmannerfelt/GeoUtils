@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-all:
-    name: build (${{ matrix.python-version }}, ${{ matrix.os }})
+    name: ${{ matrix.os }}, python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     
     strategy:
@@ -29,10 +29,11 @@ jobs:
     - name: Setup environment
       uses: conda-incubator/setup-miniconda@v2
       with:
+        auto-update-conda: true
         python-version: ${{ matrix.python-version }}
         mamba-version: "*"
         channels: conda-forge
-        channel-priority: true
+        channel-priority: strict
         environment-file: environment.yml
         activate-environment: geoutils
 
