@@ -37,18 +37,18 @@ jobs:
         channel-priority: strict
         environment-file: environment.yml
         activate-environment: geoutils
-        
+
     - name: Install development dependencies and package
       run: |
         mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib pylint
         pip install -e . --no-dependencies
-        
+
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        
+
     - name: Test with pytest
       run: |
         pytest -rA
