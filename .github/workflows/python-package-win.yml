@@ -24,12 +24,12 @@ jobs:
         python-version: 3.9
         mamba-version: "*"
         channels: conda-forge
-        channel-priority: true
+        channel-priority: strict
         environment-file: environment.yml
         activate-environment: geoutils
     - name: Install development dependencies and package
       run: |
-        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib scipy pylint rtree=0.9.3 geopandas
+        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib scipy pylint
         pip install -e . --no-dependencies
     - name: Lint with flake8
       run: |
