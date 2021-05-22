@@ -17,16 +17,19 @@ jobs:
             shell: bash -l {0}
     steps:
     - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
+    - name: Setup environment
+      uses: conda-incubator/setup-miniconda@v2
       with:
         auto-update-conda: true
         python-version: 3.9
         mamba-version: "*"
+        channels: conda-forge
+        channel-priority: true
         environment-file: environment.yml
         activate-environment: geoutils
-    - name: Install dependencies
+    - name: Install development dependencies and package
       run: |
-        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib
+        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib scipy
         python.exe -m pip install -e . --no-dependencies
     - name: Lint with flake8
       run: |
