@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: build-windows
+name: build-all
 
 on:
   push:
@@ -10,18 +10,25 @@ on:
     branches: [ master ]
 
 jobs:
-  build-windows:
-    runs-on: windows-latest
+  build:
+    name: build (${{ matrix.python-version }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     defaults:
           run:
             shell: bash -l {0}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        python-version: ["3.7", "3.8", "3.9]
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup environment
       uses: conda-incubator/setup-miniconda@v2
       with:
         auto-update-conda: true
-        python-version: 3.9
+        python-version: ${{ matrix.python-version }}
         mamba-version: "*"
         channels: conda-forge
         channel-priority: strict
@@ -29,7 +36,7 @@ jobs:
         activate-environment: geoutils
     - name: Install development dependencies and package
       run: |
-        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib scipy pylint
+        mamba install sphinx numpydoc sphinx_rtd_theme sphinx-autodoc-typehints sphinxcontrib-programoutput flake8 pytest matplotlib pylint
         pip install -e . --no-dependencies
     - name: Lint with flake8
       run: |
