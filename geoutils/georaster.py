@@ -30,6 +30,12 @@ from shapely.geometry.polygon import Polygon
 
 from geoutils.geovector import Vector
 
+# If python38 or above, Literal is builtin. Otherwise, use typing_extensions
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal  # type: ignore
+
 try:
     import rioxarray
 except ImportError:
@@ -38,6 +44,8 @@ else:
     _has_rioxarray = True
 
 RasterType = TypeVar("RasterType", bound="Raster")
+
+TRUE = Literal[True]  # This should be removed soon; it is for testing the import
 
 
 def _resampling_from_str(resampling: str) -> Resampling:
@@ -616,6 +624,13 @@ class Raster:
         cp = self.from_array(data=data, transform=self.transform, crs=self.crs, nodata=self.nodata)
 
         return cp
+
+    @property
+    def __array_interface__(self) -> dict[str, Any]:
+        if self._data is None:
+            self.load()
+
+        return self._data.__array_interface__  # type: ignore
 
     def load(self, bands: int | list[int] | None = None, **kwargs: Any) -> None:
         r"""
